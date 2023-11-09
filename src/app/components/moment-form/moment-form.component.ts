@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { Moment } from 'src/app/Moment';
 
 @Component({
   selector: 'app-moment-form',
@@ -7,6 +8,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./moment-form.component.css']
 })
 export class MomentFormComponent {
+  @Output() onSubmit =  new EventEmitter<Moment>()
   @Input() btnText!: string
 
   momentForm!: FormGroup
@@ -41,5 +43,6 @@ export class MomentFormComponent {
       return
     }
     console.log(this.momentForm.value)
+    this.onSubmit.emit(this.momentForm.value)
   }
 }
