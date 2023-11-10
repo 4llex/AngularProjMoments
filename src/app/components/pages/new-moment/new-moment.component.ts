@@ -26,7 +26,7 @@ export class NewMomentComponent {
       formData.append('image', moment.image)
     }
 
-    // enviar para service
+    //POST - enviar para service
     await this.momentService.createMoment(formData).subscribe()
 
     // exibir msg
