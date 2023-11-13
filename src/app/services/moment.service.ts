@@ -14,6 +14,12 @@ export class MomentService {
 
   constructor(private http: HttpClient) { }
 
+  //GET one moment by id
+  getMoment(id: Number): Observable<Response<Moment>> {
+    const url = `${this.apiUrl}/${id}`
+    return this.http.get<Response<Moment>>(url)
+  }
+
   //GET all moments
   getMoments(): Observable<Response<Moment[]>> {
     return this.http.get<Response<Moment[]>>(this.apiUrl)
