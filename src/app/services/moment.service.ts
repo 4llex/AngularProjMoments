@@ -26,7 +26,7 @@ export class MomentService {
   }
 
   //POST moment
-  createMoment(formData: FormData) {
+  createMoment(formData: FormData): Observable<FormData> {
     return this.http.post<FormData>(this.apiUrl, formData)
   }
 
@@ -34,6 +34,12 @@ export class MomentService {
   removeMoment(id: Number) {
     const url = `${this.apiUrl}/${id}`
     return this.http.delete(url)
+  }
+
+  //PUT editar um moment
+  updateMoment(id: Number, formData: FormData): Observable<FormData> {
+    const url = `${this.apiUrl}/${id}`
+    return this.http.put<FormData>(url, formData)
   }
 
 }
