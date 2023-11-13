@@ -29,4 +29,11 @@ export class MomentService {
   createMoment(formData: FormData) {
     return this.http.post<FormData>(this.apiUrl, formData)
   }
+
+  //Remove a moment
+  removeMoment(id: Number) {
+    const url = `${this.apiUrl}/${id}`
+    return this.http.delete(url)
+  }
+
 }
